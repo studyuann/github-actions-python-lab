@@ -30,3 +30,10 @@ jobs:
       - name: 테스트 실행
         # 그냥 pytest만 쓰는 대신 파일명을 직접 지정해줍니다.
         run: pytest test_calc.py
+      - name: 파일 목록 확인 (디버깅)
+        run: |
+          ls -R
+          pwd
+
+      - name: 테스트 실행
+        run: pytest test_calc.py

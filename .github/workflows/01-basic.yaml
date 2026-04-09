@@ -1,0 +1,31 @@
+name: 01 Basic Workflow
+# 워크플로 실행 시 나타날 이름 (github.actor는 실행한 사람의 아이디)
+run-name: ${{ github.actor }}의 기초 워크플로 실습
+
+# 1. 트리거 설정: main 브랜치에 push가 발생했을 때 실행
+on:
+  push:
+    branches:
+      - '!main'
+
+# 2. 실행할 작업(Job) 정의
+jobs:
+  hello:
+    # 실행 환경 (최신 우분투 리눅스)
+    runs-on: ubuntu-latest
+
+    steps:
+      # 단계 1: 저장소의 코드를 가상 환경으로 가져오기
+      - name: 저장소 코드 가져오기
+        uses: actions/checkout@v4
+      #메시지 출력
+      - name: 메시지 출력
+        run: echo "GitHub Actions Python Basic Workflow Running"
+      # 단계 2: 현재 작업 디렉토리 경로 확인
+      - name: 현재 디렉토리 확인
+        run: pwd
+
+      # 단계 3: 파일 목록 확인
+      - name: 파일 목록 확인
+        run: ls -al
+        
